@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotina e Tarefas com Temporizador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <div class="cabecalho-texto">
+        <h1>Rotina em Cards</h1>
+        <p>Cadastre, edite, filtre e acompanhe suas tarefas com temporizador e salvamento automático.</p>
+      </div>
+
+      <button type="button" class="btn-tema" id="btnTema" aria-label="Alternar para modo escuro" aria-pressed="false"
+        title="Alternar tema">
+        <span class="icone-tema" id="iconeTema" aria-hidden="true">☀️</span>
+      </button>
+    </header>
+
+
+    <section class="painel" aria-labelledby="tituloFormulario">
+      <h2 id="tituloFormulario">Cadastrar Tarefa</h2>
+
+      <form id="formTarefa">
+        <input type="hidden" id="tarefaId">
+
+        <div class="form-grid">
+          <div class="campo">
+            <label for="diaTarefa">Dia</label>
+            <select id="diaTarefa" required>
+              <option value="">Selecione</option>
+              <option value="segunda">Segunda-feira</option>
+              <option value="terca">Terça-feira</option>
+              <option value="quarta">Quarta-feira</option>
+              <option value="quinta">Quinta-feira</option>
+              <option value="sexta">Sexta-feira</option>
+              <option value="sabado">Sábado</option>
+              <option value="domingo">Domingo</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="horarioTarefa">Horário</label>
+            <input type="text" id="horarioTarefa" placeholder="Ex: 09:00 - 10:00" required>
+          </div>
+
+          <div class="campo">
+            <label for="atividadeTarefa">Atividade</label>
+            <input type="text" id="atividadeTarefa" placeholder="Ex: Estudar JavaScript" required>
+          </div>
+
+          <div class="campo">
+            <label for="tipoTarefa">Tipo</label>
+            <select id="tipoTarefa" required>
+              <option value="">Selecione</option>
+              <option value="leitura">Leitura</option>
+              <option value="programacao">Programação</option>
+              <option value="saxofone">Saxofone</option>
+              <option value="reuniao">Reunião</option>
+              <option value="almoco">Almoço</option>
+              <option value="pausa">Pausa</option>
+              <option value="descanso">Descanso</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="campo campo-full">
+            <label for="descricaoTarefa">Descrição</label>
+            <textarea id="descricaoTarefa" placeholder="Digite uma observação sobre a tarefa"></textarea>
+          </div>
+
+          <div class="acoes-form">
+            <button type="submit" class="btn btn-primario" id="btnSalvar">
+              Cadastrar Tarefa
+            </button>
+
+            <button type="button" class="btn btn-secundario" id="btnCancelarEdicao">
+              Limpar Formulário
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="painel" aria-labelledby="tituloBusca">
+      <h2 id="tituloBusca">Buscar tarefas</h2>
+
+      <div class="grupo-busca-principal">
+        <div class="campo">
+          <label for="campoBusca">Barra de busca</label>
+          <input type="search" id="campoBusca" placeholder="Digite atividade, descrição, tipo, dia ou status..."
+            aria-label="Digite um termo para buscar tarefas">
+        </div>
+
+        <button type="button" class="btn btn-primario btn-buscar" id="btnBuscar">
+          Buscar Tarefa
+        </button>
+      </div>
+
+      <div class="filtros">
+        <div class="campo">
+          <label for="filtroDia">Dia</label>
+          <select id="filtroDia">
+            <option value="todos">Todos os dias</option>
+            <option value="segunda">Segunda-feira</option>
+            <option value="terca">Terça-feira</option>
+            <option value="quarta">Quarta-feira</option>
+            <option value="quinta">Quinta-feira</option>
+            <option value="sexta">Sexta-feira</option>
+            <option value="sabado">Sábado</option>
+            <option value="domingo">Domingo</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtroAtividade">Atividade</label>
+          <select id="filtroAtividade">
+            <option value="todos">Todas as atividades</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtroTipo">Tipo</label>
+          <select id="filtroTipo">
+            <option value="todos">Todos os tipos</option>
+            <option value="leitura">Leitura</option>
+            <option value="programacao">Programação</option>
+            <option value="saxofone">Saxofone</option>
+            <option value="reuniao">Reunião</option>
+            <option value="almoco">Almoço</option>
+            <option value="pausa">Pausa</option>
+            <option value="descanso">Descanso</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="acoes-filtro">
+          <button type="button" class="btn btn-secundario" id="btnLimparFiltros">
+            Limpar Filtros
+          </button>
+        </div>
+      </div>
+
+      <p class="resultado-busca" id="resultadoBusca" aria-live="polite"></p>
+    </section>
+
+    <section class="cards-container" id="cardsContainer" aria-label="Lista de tarefas em cards"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
