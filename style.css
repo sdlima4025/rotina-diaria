@@ -164,7 +164,6 @@
         }
     }
 
-
     button,
     input,
     select,
@@ -232,7 +231,7 @@
     label {
         font-weight: 700;
         font-size: 0.9rem;
-        color: #333333;
+        color: --azul-escuro;
     }
 
     input,

@@ -12,7 +12,7 @@
   <main class="container">
     <header class="cabecalho">
       <div class="cabecalho-texto">
-        <h1>Rotina em Cards</h1>
+        <h1>TAREFA DIÁRIA</h1>
         <p>Cadastre, edite, filtre e acompanhe suas tarefas com temporizador e salvamento automático.</p>
       </div>
 
@@ -31,7 +31,7 @@
 
         <div class="form-grid">
           <div class="campo">
-            <label for="diaTarefa">Dia</label>
+            <label for="diaTarefa">Dia:</label>
             <select id="diaTarefa" required>
               <option value="">Selecione</option>
               <option value="segunda">Segunda-feira</option>
@@ -45,17 +45,17 @@
           </div>
 
           <div class="campo">
-            <label for="horarioTarefa">Horário</label>
+            <label for="horarioTarefa">Horário:</label>
             <input type="text" id="horarioTarefa" placeholder="Ex: 09:00 - 10:00" required>
           </div>
 
           <div class="campo">
-            <label for="atividadeTarefa">Atividade</label>
+            <label for="atividadeTarefa">Atividade:</label>
             <input type="text" id="atividadeTarefa" placeholder="Ex: Estudar JavaScript" required>
           </div>
 
           <div class="campo">
-            <label for="tipoTarefa">Tipo</label>
+            <label for="tipoTarefa">Tipo:</label>
             <select id="tipoTarefa" required>
               <option value="">Selecione</option>
               <option value="leitura">Leitura</option>
@@ -70,7 +70,7 @@
           </div>
 
           <div class="campo campo-full">
-            <label for="descricaoTarefa">Descrição</label>
+            <label for="descricaoTarefa">Descrição:</label>
             <textarea id="descricaoTarefa" placeholder="Digite uma observação sobre a tarefa"></textarea>
           </div>
 
@@ -88,11 +88,11 @@
     </section>
 
     <section class="painel" aria-labelledby="tituloBusca">
-      <h2 id="tituloBusca">Buscar tarefas</h2>
+      <h2 id="tituloBusca">Buscar Tarefa</h2>
 
       <div class="grupo-busca-principal">
         <div class="campo">
-          <label for="campoBusca">Barra de busca</label>
+          <label for="campoBusca">Barra de Busca:</label>
           <input type="search" id="campoBusca" placeholder="Digite atividade, descrição, tipo, dia ou status..."
             aria-label="Digite um termo para buscar tarefas">
         </div>
@@ -104,30 +104,30 @@
 
       <div class="filtros">
         <div class="campo">
-          <label for="filtroDia">Dia</label>
+          <label for="filtroDia">Dia:</label>
           <select id="filtroDia">
-            <option value="todos">Todos os dias</option>
-            <option value="segunda">Segunda-feira</option>
-            <option value="terca">Terça-feira</option>
-            <option value="quarta">Quarta-feira</option>
-            <option value="quinta">Quinta-feira</option>
-            <option value="sexta">Sexta-feira</option>
+            <option value="todos">Todos os Dias</option>
+            <option value="segunda">Segunda-Feira</option>
+            <option value="terca">Terça-Feira</option>
+            <option value="quarta">Quarta-Feira</option>
+            <option value="quinta">Quinta-Feira</option>
+            <option value="sexta">Sexta-Feira</option>
             <option value="sabado">Sábado</option>
             <option value="domingo">Domingo</option>
           </select>
         </div>
 
         <div class="campo">
-          <label for="filtroAtividade">Atividade</label>
+          <label for="filtroAtividade">Atividade:</label>
           <select id="filtroAtividade">
-            <option value="todos">Todas as atividades</option>
+            <option value="todos">Todas as Atividades</option>
           </select>
         </div>
 
         <div class="campo">
-          <label for="filtroTipo">Tipo</label>
+          <label for="filtroTipo">Tipo:</label>
           <select id="filtroTipo">
-            <option value="todos">Todos os tipos</option>
+            <option value="todos">Todos os Tipos</option>
             <option value="leitura">Leitura</option>
             <option value="programacao">Programação</option>
             <option value="saxofone">Saxofone</option>
