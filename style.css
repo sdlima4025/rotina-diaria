@@ -1,603 +1,635 @@
-    :root {
-        --azul: #1f4e79;
-        --azul-escuro: #163a5a;
-        --verde: #198754;
-        --amarelo: #f59f00;
-        --vermelho: #dc3545;
-        --cinza: #6c757d;
-        --roxo: #6f42c1;
-        --fundo: #f4f7fb;
-        --branco: #ffffff;
-        --texto: #222222;
-        --texto-suave: #666666;
-        --borda: #d8dee6;
-        --sombra: 0 8px 24px rgba(0, 0, 0, 0.08);
-        --radius: 16px;
-        --transicao: 0.2s ease;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        margin: 0;
-        padding: 20px;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(135deg, #eef3f8, #f9fbfd);
-        color: var(--texto);
-    }
-
-    body.tema-escuro {
-        --azul: #8ab4f8;
-        --azul-escuro: #669df6;
-        --verde: #3ddc84;
-        --amarelo: #ffd166;
-        --vermelho: #ff6b6b;
-        --cinza: #9aa0a6;
-        --roxo: #b794f4;
-        --fundo: #121826;
-        --branco: #1f2937;
-        --texto: #f4f7fb;
-        --texto-suave: #cbd5e1;
-        --borda: #334155;
-        --sombra: 0 8px 24px rgba(0, 0, 0, 0.35);
-
-        background: linear-gradient(135deg, #111827, #1e293b);
-        color: var(--texto);
-    }
-
-    body.tema-escuro input,
-    body.tema-escuro select,
-    body.tema-escuro textarea {
-        background: #111827;
-        color: var(--texto);
-        border-color: #475569;
-    }
-
-    body.tema-escuro input::placeholder,
-    body.tema-escuro textarea::placeholder {
-        color: #94a3b8;
-    }
-
-    body.tema-escuro .card-tarefa.status-em-andamento {
-        background: #172554;
-    }
-
-    body.tema-escuro .card-tarefa.status-pausada {
-        background: #3b2f0b;
-    }
-
-    body.tema-escuro .card-tarefa.status-finalizada {
-        background: #123524;
-    }
-
-    body.tema-escuro .tag {
-        background: #334155;
-        color: #f8fafc;
-    }
-
-    body.tema-escuro .tag-tipo {
-        background: #1e3a5f;
-        color: #bfdbfe;
-    }
-
-    body.tema-escuro .temporizador {
-        background: #172554;
-        border-color: #2563eb;
-    }
-
-    body.tema-escuro .temporizador-tempo {
-        color: #bfdbfe;
-    }
-
-    .cabecalho {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        text-align: left;
-        margin-bottom: 24px;
-    }
-
-    .cabecalho-texto {
-        flex: 1;
-    }
-
-    .btn-tema {
-        width: 48px;
-        height: 48px;
-        flex: 0 0 48px;
-        border: 1px solid var(--borda);
-        border-radius: 50%;
-        background: var(--branco);
-        color: var(--texto);
-        box-shadow: var(--sombra);
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition:
-            transform var(--transicao),
-            background-color var(--transicao),
-            border-color var(--transicao),
-            box-shadow var(--transicao);
-    }
-
-    .btn-tema:hover {
-        transform: translateY(-2px);
-    }
-
-    .btn-tema:focus {
-        outline: none;
-        box-shadow: 0 0 0 4px rgba(31, 78, 121, 0.25);
-    }
-
-    .icone-tema {
-        font-size: 1.35rem;
-        line-height: 1;
-    }
-
-    body.tema-escuro .btn-tema {
-        background: #0f172a;
-        border-color: #475569;
-        color: #f8fafc;
-    }
-
-    @media (max-width: 600px) {
-        .cabecalho {
-            align-items: flex-start;
-        }
-
-        .btn-tema {
-            width: 44px;
-            height: 44px;
-            flex-basis: 44px;
-        }
-
-        .icone-tema {
-            font-size: 1.2rem;
-        }
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-        font-family: inherit;
-    }
-
-    .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .cabecalho {
-        text-align: center;
-        margin-bottom: 24px;
-    }
-
-    .cabecalho h1 {
-        margin: 0 0 8px;
-        color: var(--azul);
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
-    }
-
-    .cabecalho p {
-        margin: 0;
-        color: var(--texto-suave);
-        line-height: 1.5;
-    }
-
-    .painel {
-        background: var(--branco);
-        padding: 20px;
-        border-radius: var(--radius);
-        box-shadow: var(--sombra);
-        border: 1px solid var(--borda);
-        margin-bottom: 24px;
-    }
-
-    .painel h2 {
-        margin: 0 0 16px;
-        color: var(--azul);
-        font-size: 1.3rem;
-    }
-
-    .form-grid,
-    .filtros {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        align-items: flex-end;
-    }
-
-    .campo {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        flex: 1 1 220px;
-    }
-
-    .campo-full {
-        flex: 1 1 100%;
-    }
-
-    label {
-        font-weight: 700;
-        font-size: 0.9rem;
-        color: --azul-escuro;
-    }
-
-    input,
-    select,
-    textarea {
-        width: 100%;
-        min-height: 44px;
-        padding: 10px 12px;
-        border: 1px solid #bfc7d1;
-        border-radius: 10px;
-        font-size: 1rem;
-        outline: none;
-        background: #ffffff;
-        transition: border-color var(--transicao), box-shadow var(--transicao);
-    }
-
-    textarea {
-        min-height: 90px;
-        resize: vertical;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-        border-color: var(--azul);
-        box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.15);
-    }
-
-    .acoes-form,
-    .acoes-filtro {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        min-height: 44px;
-        padding: 10px 14px;
-        border: none;
-        border-radius: 10px;
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: transform var(--transicao), opacity var(--transicao), background-color var(--transicao);
-    }
-
-    .btn:hover {
-        opacity: 0.92;
-        transform: translateY(-1px);
-    }
-
-    .btn:active {
-        transform: translateY(0);
-    }
-
-    .btn-primario {
-        background: var(--azul);
-    }
-
-    .btn-primario:hover {
-        background: var(--azul-escuro);
-    }
-
-    .btn-secundario {
-        background: var(--cinza);
-    }
-
-    .btn-verde {
-        background: var(--verde);
-    }
-
-    .btn-amarelo {
-        background: var(--amarelo);
-        color: #2b2200;
-    }
-
-    .btn-vermelho {
-        background: var(--vermelho);
-    }
-
-    .btn-roxo {
-        background: var(--roxo);
-    }
-
-    .grupo-busca-principal {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 16px;
-    }
-
-    .btn-buscar {
-        width: 100%;
-    }
-
-    .resultado-busca {
-        margin: 14px 0 0;
-        color: var(--texto-suave);
-        font-weight: 700;
-        font-size: 0.95rem;
-    }
-
-    .cards-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        align-items: stretch;
-    }
-
-    .card-tarefa {
-        flex: 1 1 320px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: var(--branco);
-        border-radius: var(--radius);
-        box-shadow: var(--sombra);
-        border: 1px solid var(--borda);
-        border-top: 8px solid var(--cinza);
-        overflow: hidden;
-        transition: transform var(--transicao), box-shadow var(--transicao);
-    }
-
-    .card-tarefa:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-    }
-
-    .status-pendente {
-        border-top-color: var(--cinza);
-    }
-
-    .status-em-andamento {
-        border-top-color: var(--azul);
-        background: #f5f9ff;
-    }
-
-    .status-pausada {
-        border-top-color: var(--amarelo);
-        background: #fff9ec;
-    }
-
-    .status-finalizada {
-        border-top-color: var(--verde);
-        background: #f1fbf5;
-    }
-
-    .card-conteudo {
-        padding: 18px;
-    }
-
-    .card-topo {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 12px;
-        margin-bottom: 12px;
-    }
-
-    .dia {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--azul);
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-    }
-
-    .horario {
-        font-size: 0.85rem;
-        color: var(--texto-suave);
-        font-weight: 700;
-        white-space: nowrap;
-    }
-
-    .atividade {
-        margin: 0 0 10px;
-        font-size: 1.25rem;
-        color: #1f2937;
-    }
-
-    .status-finalizada .atividade {
-        text-decoration: line-through;
-        color: #4f5f55;
-    }
-
-    .descricao {
-        margin: 0 0 14px;
-        color: var(--texto-suave);
-        line-height: 1.5;
-    }
-
-    .meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 14px;
-    }
-
-    .tag {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        background: #eef2f7;
-        color: #344054;
-    }
-
-    .tag-tipo {
-        background: #e3f2fd;
-        color: #1565c0;
-    }
-
-    .tag-status {
-        color: #ffffff;
-    }
-
-    .tag-status.pendente {
-        background: var(--cinza);
-    }
-
-    .tag-status.em-andamento {
-        background: var(--azul);
-    }
-
-    .tag-status.pausada {
-        background: var(--amarelo);
-        color: #2b2200;
-    }
-
-    .tag-status.finalizada {
-        background: var(--verde);
-    }
-
-    .temporizador {
-        display: none;
-        padding: 14px;
-        border-radius: 14px;
-        background: #eef5ff;
-        border: 1px solid #cfe2ff;
-        text-align: center;
-        margin-top: 12px;
-    }
-
-    .temporizador.visivel {
-        display: block;
-    }
-
-    .temporizador-label {
-        display: block;
-        font-size: 0.78rem;
-        font-weight: 700;
-        color: var(--texto-suave);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 4px;
-    }
-
-    .temporizador-tempo {
-        display: block;
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--azul);
-        font-variant-numeric: tabular-nums;
-    }
-
-    .status-pausada .temporizador {
-        background: #fff3cd;
-        border-color: #ffe08a;
-    }
-
-    .status-pausada .temporizador-tempo {
-        color: #8a6200;
-    }
-
-    .card-acoes {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 0 18px 18px;
-        margin-top: auto;
-    }
-
-    .btn-acao {
-        flex: 1 1 90px;
-        font-size: 0.9rem;
-    }
-
-    .sem-resultados {
-        width: 100%;
-        padding: 28px;
-        text-align: center;
-        background: var(--branco);
-        border-radius: var(--radius);
-        box-shadow: var(--sombra);
-        border: 1px solid var(--borda);
-        color: var(--texto-suave);
-        font-weight: 700;
-    }
-
-    @media (max-width: 768px) {
-        body {
-            padding: 14px;
-        }
-
-        .cabecalho {
-            text-align: left;
-        }
-
-        .painel {
-            padding: 16px;
-        }
-
-        .form-grid,
-        .filtros {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .campo,
-        .campo-full,
-        .acoes-form,
-        .acoes-filtro {
-            width: 100%;
-            flex: 1 1 auto;
-        }
-
-        .acoes-form,
-        .acoes-filtro {
-            flex-direction: column;
-        }
-
-        .btn {
-            width: 100%;
-        }
-
-        .cards-container {
-            flex-direction: column;
-        }
-
-        .card-tarefa {
-            width: 100%;
-            flex: 1 1 auto;
-        }
-
-        .card-topo {
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .horario {
-            white-space: normal;
-        }
-
-        .card-acoes {
-            flex-direction: column;
-        }
-
-        .btn-acao {
-            width: 100%;
-        }
-
-        .temporizador-tempo {
-            font-size: 1.6rem;
-        }
-    }
+/* =========================================================
+   VARIÁVEIS GERAIS
+   ========================================================= */
+
+:root {
+  --app-primary: #1f4e79;
+  --app-primary-dark: #163a5a;
+  --app-success: #198754;
+  --app-warning: #f59f00;
+  --app-danger: #dc3545;
+  --app-secondary: #6c757d;
+
+  --app-bg: #f4f7fb;
+  --app-surface: #ffffff;
+  --app-text: #222222;
+  --app-muted: #667085;
+  --app-border: #d8dee6;
+
+  --app-radius: 1rem;
+  --app-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.08);
+
+  --bs-primary: var(--app-primary);
+  --bs-success: var(--app-success);
+  --bs-warning: var(--app-warning);
+  --bs-danger: var(--app-danger);
+  --bs-secondary: var(--app-secondary);
+}
+
+/* =========================================================
+   MODO ESCURO
+   ========================================================= */
+
+body.tema-escuro {
+  --app-primary: #60a5fa;
+  --app-primary-dark: #3b82f6;
+  --app-success: #22c55e;
+  --app-warning: #facc15;
+  --app-danger: #f87171;
+  --app-secondary: #94a3b8;
+
+  --app-bg: #0f172a;
+  --app-surface: #1e293b;
+  --app-text: #f8fafc;
+  --app-muted: #cbd5e1;
+  --app-border: #475569;
+
+  --bs-primary: #60a5fa;
+  --bs-success: #22c55e;
+  --bs-warning: #facc15;
+  --bs-danger: #f87171;
+  --bs-secondary: #94a3b8;
+
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: var(--app-text);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef3f8, #f9fbfd);
+  color: var(--app-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Remove aparência amarelada/autofill agressiva em alguns navegadores */
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+/* =========================================================
+   GOOGLE ICONS
+   ========================================================= */
+
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.app-header {
+  flex-wrap: nowrap;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--app-primary);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+}
+
+.app-subtitle {
+  color: var(--app-muted);
+  line-height: 1.5;
+}
+
+.btn-theme {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   PAINÉIS E TÍTULOS
+   ========================================================= */
+
+.app-panel {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  padding: 1.25rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-primary);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--app-text);
+  font-weight: 700;
+}
+
+/* =========================================================
+   FORMULÁRIOS
+   ========================================================= */
+
+.form-control,
+.form-select {
+  min-height: 44px;
+  border-color: #bfc7d1;
+  border-radius: 0.65rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--app-primary);
+  box-shadow: 0 0 0 0.2rem rgba(31, 78, 121, 0.18);
+}
+
+.form-control[readonly] {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.campo-hora {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Botões com ícones */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.tarefa-col {
+  display: flex;
+}
+
+.card-tarefa {
+  width: 100%;
+  border: 1px solid var(--app-border);
+  border-top: 0.5rem solid var(--app-secondary);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-tarefa:hover {
+  transform: translateY(-3px);
+}
+
+.card-tarefa.status-pendente {
+  border-top-color: var(--app-secondary);
+}
+
+.card-tarefa.status-em-andamento {
+  border-top-color: var(--app-primary);
+  background: #f5f9ff;
+}
+
+.card-tarefa.status-pausada {
+  border-top-color: var(--app-warning);
+  background: #fff9ec;
+}
+
+.card-tarefa.status-finalizada {
+  border-top-color: var(--app-success);
+  background: #f1fbf5;
+}
+
+.card-data,
+.card-horario {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 700;
+}
+
+.card-data {
+  color: var(--app-primary);
+}
+
+.card-horario {
+  color: var(--app-muted);
+  white-space: nowrap;
+}
+
+.atividade {
+  color: var(--app-text);
+  font-weight: 800;
+}
+
+.status-finalizada .atividade {
+  color: var(--app-muted);
+  text-decoration: line-through;
+}
+
+.descricao {
+  color: var(--app-muted);
+  line-height: 1.5;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.tag-tipo {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.tag-status {
+  color: #ffffff;
+}
+
+.tag-status.pendente {
+  background: var(--app-secondary);
+}
+
+.tag-status.em-andamento {
+  background: var(--app-primary);
+}
+
+.tag-status.pausada {
+  background: var(--app-warning);
+  color: #2b2200;
+}
+
+.tag-status.finalizada {
+  background: var(--app-success);
+}
+
+/* =========================================================
+   CRONÔMETRO
+   ========================================================= */
+
+.temporizador {
+  display: none;
+  margin-top: 1rem;
+}
+
+.temporizador.visivel {
+  display: block;
+}
+
+.temporizador-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--app-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.temporizador-tempo {
+  display: block;
+  color: var(--app-primary);
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   BUSCA E RESULTADO
+   ========================================================= */
+
+.resultado-busca {
+  color: var(--app-muted);
+  font-weight: 700;
+}
+
+.sem-resultados {
+  width: 100%;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  color: var(--app-muted);
+  font-weight: 700;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* =========================================================
+   CALENDÁRIO CUSTOMIZADO
+   ========================================================= */
+
+.calendario-popup {
+  position: absolute;
+  z-index: 9999;
+  width: min(360px, calc(100vw - 28px));
+  display: none;
+  background: var(--app-surface);
+  color: var(--app-text);
+  border: 1px solid var(--app-border);
+  border-radius: 1rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  padding: 1rem;
+}
+
+.calendario-popup.aberto {
+  display: block;
+}
+
+.calendario-controles {
+  display: grid;
+  grid-template-columns: 38px 38px 1fr 38px 38px;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.calendario-selects {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.calendario-selects .form-select {
+  min-height: 38px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.calendario-semana,
+.calendario-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.calendario-semana span {
+  color: var(--app-muted);
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.4rem 0;
+}
+
+.calendario-dia {
+  min-height: 38px;
+  border: 1px solid var(--app-border);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--app-text);
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.15s ease-in-out;
+}
+
+.calendario-dia:hover:not(:disabled) {
+  background: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: #ffffff;
+}
+
+.calendario-dia.hoje {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+.calendario-dia.selecionado {
+  background: var(--bs-success);
+  border-color: var(--bs-success);
+  color: #ffffff;
+}
+
+.calendario-dia:disabled {
+  background: #e5e7eb;
+  color: #6b7280;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.calendario-rodape {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* =========================================================
+   MODO ESCURO - BOOTSTRAP E COMPONENTES
+   ========================================================= */
+
+body.tema-escuro .app-panel,
+body.tema-escuro .card-tarefa,
+body.tema-escuro .sem-resultados,
+body.tema-escuro .calendario-popup {
+  background: var(--app-surface);
+  color: var(--app-text);
+  border-color: var(--app-border);
+}
+
+body.tema-escuro .app-title,
+body.tema-escuro .section-title,
+body.tema-escuro .card-data {
+  color: #93c5fd;
+}
+
+body.tema-escuro .app-subtitle,
+body.tema-escuro .descricao,
+body.tema-escuro .card-horario,
+body.tema-escuro .resultado-busca,
+body.tema-escuro .temporizador-label {
+  color: var(--app-muted);
+}
+
+body.tema-escuro .icon-label,
+body.tema-escuro .atividade {
+  color: var(--app-text);
+}
+
+body.tema-escuro .form-control,
+body.tema-escuro .form-select {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-color: #64748b;
+}
+
+body.tema-escuro .form-control::placeholder {
+  color: #94a3b8;
+}
+
+body.tema-escuro .form-control:focus,
+body.tema-escuro .form-select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.35);
+}
+
+body.tema-escuro .form-control[readonly] {
+  background-color: #0f172a;
+}
+
+body.tema-escuro .btn-outline-secondary {
+  color: #f8fafc;
+  border-color: #64748b;
+}
+
+body.tema-escuro .btn-outline-secondary:hover {
+  background: #334155;
+  border-color: #94a3b8;
+}
+
+body.tema-escuro .status-pendente {
+  background: #1e293b;
+  border-top-color: #94a3b8;
+}
+
+body.tema-escuro .status-em-andamento {
+  background: #172554;
+  border-top-color: #60a5fa;
+}
+
+body.tema-escuro .status-pausada {
+  background: #422006;
+  border-top-color: #facc15;
+}
+
+body.tema-escuro .status-finalizada {
+  background: #052e16;
+  border-top-color: #22c55e;
+}
+
+body.tema-escuro .tag-tipo {
+  background: #1e3a8a;
+  color: #dbeafe;
+}
+
+body.tema-escuro .tag-status.pendente {
+  background: #64748b;
+}
+
+body.tema-escuro .tag-status.em-andamento {
+  background: #2563eb;
+}
+
+body.tema-escuro .tag-status.pausada {
+  background: #facc15;
+  color: #1f2937;
+}
+
+body.tema-escuro .tag-status.finalizada {
+  background: #16a34a;
+}
+
+body.tema-escuro .temporizador {
+  background-color: #0f172a !important;
+  border-color: #3b82f6 !important;
+}
+
+body.tema-escuro .temporizador-tempo {
+  color: #93c5fd;
+}
+
+body.tema-escuro .calendario-dia {
+  background: #0f172a;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+body.tema-escuro .calendario-dia:hover:not(:disabled) {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+body.tema-escuro .calendario-dia.selecionado {
+  background: #16a34a;
+  border-color: #22c55e;
+}
+
+body.tema-escuro .calendario-dia:disabled {
+  background: #334155;
+  color: #94a3b8;
+}
+
+/* Correção do ícone nativo de relógio no modo escuro */
+body.tema-escuro input[type="time"],
+body.tema-escuro input[type="date"] {
+  color-scheme: dark;
+}
+
+body.tema-escuro input[type="time"]::-webkit-calendar-picker-indicator,
+body.tema-escuro input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.8);
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 576px) {
+  .app-header {
+    align-items: flex-start;
+  }
+
+  .app-panel {
+    padding: 1rem;
+  }
+
+  .card-horario {
+    white-space: normal;
+  }
+
+  .calendario-controles {
+    grid-template-columns: 34px 34px 1fr 34px 34px;
+  }
+
+  .calendario-popup {
+    padding: 0.8rem;
+  }
+}
